@@ -10,8 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.3.4",
-    "express": "^4.13.3",
-    "angular": "^1.4.9"
-      
+    "express": "^4.13.3"
   }
 }

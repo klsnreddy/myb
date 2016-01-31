@@ -6,17 +6,6 @@ var app = express();
 
 var port = process.env.PORT || 3000;
 
-var people = [
-	{
-		name: 'John Doe'
-	},
-	{
-		name: 'Jane Doe'
-	},
-	{
-		name: 'Jim Doe'
-	}
-];
 
 app.engine("html", ejs.renderFile);
 app.set('view engine', 'html');

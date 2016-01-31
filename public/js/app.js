@@ -1,12 +1,3 @@
-/*angular.module('TestApp', []);
-
-angular.module('TestApp')
-	.controller('MainController', ctrlFunc);
-	
-function ctrlFunc() {
-	this.people = clientPeople;
-}*/
-
 // This code only runs on the client
   angular.module('simple-todos',[]);
  
@@ -20,4 +11,14 @@ function ctrlFunc() {
         { text: 'This is task 3' }
       ];
 */
+  }]);
+
+
+//Menu Page
+var Menu = angular.module('Menu',[]);
+ 
+  Menu.controller('MenuCtrl', ['$scope',
+    function ($scope) {
+      this.menu = menu;
+  
   }]);

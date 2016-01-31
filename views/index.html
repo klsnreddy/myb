@@ -3,6 +3,9 @@
     <title>Todo List</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+        <script>
+           var tasks = <%- JSON.stringify(tasks)%>;
+        </script>
         <script src="/assets/js/app.js"></script>
         <link rel="stylesheet" type="text/css" href="/assets/css/app.css">
     </head>

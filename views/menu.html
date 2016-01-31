@@ -1,0 +1,26 @@
+<html>
+	<head>
+    <title>Todo List</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+        <script>
+           var menu = <%- JSON.stringify(menu)%>;
+        </script>
+        <script src="/assets/js/app.js"></script>
+        <link rel="stylesheet" type="text/css" href="/assets/css/app.css">
+    </head>
+ 
+<body>
+<div class="container"
+     ng-app="Menu"
+     ng-controller="MenuCtrl as mc">
+    <header>
+    <h1>Menu</h1>
+  </header>
+ 
+  <ul>
+    <li ng-repeat="cat in mc.menu">{{cat.name}}</li>
+  </ul>
+</div>
+</body>
+</html>

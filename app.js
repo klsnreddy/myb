@@ -22,10 +22,8 @@ var tasksSchema = new Schema({
 var tasks = mongoose.model('tasks', tasksSchema);
 
 app.get('/', function(req, res) {
-    console.log(tasks);
     tasks.find({}, function(err, tsks) {	
       if(err) console.log(err);
-      console.log(tsks);
       res.render('index', {tasks : tsks});
     });	
 });

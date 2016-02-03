@@ -21,17 +21,41 @@
         <h1>Menu</h1>
     </header>
  
-
-    <div class="row" ng-repeat="cat in mc.menu">
+    
+     <!-- Appetisers -->
+    <div class="row" ng-repeat="cat in mc.menu | filter: {cat: A}">
       <div class="col-xs-24 col-sm-12">
           {{cat.name}}
       </div>
       <div class="row">
           <div class="col-xs-12 col-sm-6" ng-repeat="sub in cat.sub">
               {{sub.name}}
+              <ul>
+                  <li ng-repeat="item in sub.items">
+                      {{item.name}}
+                  </li>
+              </ul>
           </div>
       </div>
     </div>
+    
+    <!-- Biryani -->
+    <div class="row" ng-repeat="cat in mc.menu | filter: {cat: B}">
+      <div class="col-xs-24 col-sm-12">
+          {{cat.name}}
+      </div>
+      <div class="row">
+          <div class="col-xs-12 col-sm-6" ng-repeat="sub in cat.sub">
+              {{sub.name}}
+              <ul>
+                  <li ng-repeat="item in sub.items">
+                      {{item.name}}
+                  </li>
+              </ul>
+          </div>
+      </div>
+    </div>
+    
 </div>
 </body>
 </html>

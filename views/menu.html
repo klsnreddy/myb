@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
-	<head>
+<html lang="en">
+        <head>
     <title>Todo List</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+        <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
         <script>
            var menu = <%- JSON.stringify(menu)%>;
         </script>
@@ -11,51 +12,108 @@
         <link rel="stylesheet" type="text/css" href="/assets/css/app.css">
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     </head>
- 
+
 <body>
 <div class="container"
      ng-app="Menu"
      ng-controller="MenuCtrl as mc">
-   
+
     <header>
         <h1>Menu</h1>
     </header>
- 
-    
-     <!-- Appetisers -->
-    <div class="row" ng-repeat="cat in mc.menu | filter: {cat: A}">
-      <div class="col-xs-24 col-sm-12">
-          {{cat.name}}
-      </div>
-      <div class="row">
-          <div class="col-xs-12 col-sm-6" ng-repeat="sub in cat.sub">
-              {{sub.name}}
-              <ul>
-                  <li ng-repeat="item in sub.items">
-                      {{item.name}}
-                  </li>
-              </ul>
+
+    <!-- Appetisers -->
+    <div class="row category" ng-repeat="cat in mc.menu | filter: {_id: 'A'}">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+          <!-- Category Header -->
+          <ul class="bg-primary category-name"><li>{{cat.name}}
+              <span class="menu-icon glyphicon glyphicon-menu-up"></span></li></ul>
+          <ul class="bg-primary category-name-minified" style="display:none"><li>{{cat.name}}
+              <span class="menu-icon glyphicon glyphicon-menu-down"></span></li></ul>
+          <!-- Sub Categories -->
+          <div class="row sub-cat">
+              <div class="col-xs-12 col-sm-12 col-md-6" ng-repeat="sub in cat.sub">
+                  <!-- Sub Category Header -->
+                  <ul class="sub-cat-name bg-info"><li>{{sub.name}}
+                      <span class="menu-icon glyphicon glyphicon-menu-up"></span></li></ul>
+                  <ul class="sub-cat-name-minified bg-info" style="display:none"><li>{{sub.name}}
+                      <span class="menu-icon glyphicon glyphicon-menu-down"></span></li></ul>
+                  <!-- Items section -->
+                  <ul class="items">
+                      <li class="row item" ng-repeat="item in sub.items">
+                          <span class="col-xs-8 col-sm-8 ng-md-4">{{item.name}}</span>
+                          <span class="col-xs-4 col-sm-4 ng-md-2">{{item.price}}</span>
+                      </li>
+                  </ul>
+              </div>
           </div>
       </div>
+
     </div>
-    
+    <hr>
     <!-- Biryani -->
-    <div class="row" ng-repeat="cat in mc.menu | filter: {cat: B}">
-      <div class="col-xs-24 col-sm-12">
-          {{cat.name}}
-      </div>
-      <div class="row">
-          <div class="col-xs-12 col-sm-6" ng-repeat="sub in cat.sub">
-              {{sub.name}}
-              <ul>
-                  <li ng-repeat="item in sub.items">
-                      {{item.name}}
-                  </li>
-              </ul>
+    <div class="row category" ng-repeat="cat in mc.menu | filter: {_id: 'B'}">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+          <!-- Category Header -->
+          <ul class="bg-primary category-name"><li>{{cat.name}}
+              <span class="menu-icon glyphicon glyphicon-menu-up"></span></li></ul>
+          <ul class="bg-primary category-name-minified" style="display:none"><li>{{cat.name}}
+              <span class="menu-icon glyphicon glyphicon-menu-down"></span></li></ul>
+          <!-- Sub Categories -->
+          <div class="row sub-cat">
+              <div class="col-xs-12 col-sm-12 col-md-6">
+                  <!-- Vegetarian Sub Category -->
+                  <div ng-repeat="sub in cat.sub | filter: {id: 'V'}">
+                      <!-- Sub Category Header -->
+                      <ul class="sub-cat-name bg-info"><li>{{sub.name}}
+                          <span class="menu-icon glyphicon glyphicon-menu-up"></span></li></ul>
+                      <ul class="sub-cat-name-minified bg-info" style="display:none"><li>{{sub.name}}
+                          <span class="menu-icon glyphicon glyphicon-menu-down"></span></li></ul>
+                      <!-- Items section -->
+                      <ul class="items">
+                          <li class="row item" ng-repeat="item in sub.items">
+                              <span class="col-xs-8 col-sm-8 ng-md-4">{{item.name}}</span>
+                              <span class="col-xs-4 col-sm-4 ng-md-2">{{item.price}}</span>
+                          </li>
+                      </ul>
+                  </div>
+                  <!-- Non-Vegetarian Sub Category -->
+                  <div ng-repeat="sub in cat.sub | filter: {id: 'N'}">
+                      <!-- Sub Category Header -->
+                      <ul class="sub-cat-name bg-info"><li>{{sub.name}}
+                          <span class="menu-icon glyphicon glyphicon-menu-up"></span></li></ul>
+                      <ul class="sub-cat-name-minified bg-info" style="display:none"><li>{{sub.name}}
+                          <span class="menu-icon glyphicon glyphicon-menu-down"></span></li></ul>
+                      <!-- Items section -->
+                      <ul class="items">
+                          <li class="row item" ng-repeat="item in sub.items">
+                              <span class="col-xs-8 col-sm-8 ng-md-4">{{item.name}}</span>
+                              <span class="col-xs-4 col-sm-4 ng-md-2">{{item.price}}</span>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+              <!-- Family Pack Sub Category -->
+              <div class="col-xs-12 col-sm-12 col-md-6" ng-repeat="sub in cat.sub | filter: {id: 'F'}">
+                 <!-- Sub Category Header -->
+                  <ul class="sub-cat-name bg-info"><li>{{sub.name}}
+                      <span class="menu-icon glyphicon glyphicon-menu-up"></span></li></ul>
+                  <ul class="sub-cat-name-minified bg-info" style="display:none"><li>{{sub.name}}
+                      <span class="menu-icon glyphicon glyphicon-menu-down"></span></li></ul>
+                  <!-- Items section -->
+                  <ul class="items">
+                      <li class="row item" ng-repeat="item in sub.items">
+                          <span class="col-xs-8 col-sm-8 ng-md-4">{{item.name}}</span>
+                          <span class="col-xs-4 col-sm-4 ng-md-2">{{item.price}}</span>
+                      </li>
+                  </ul>
+              </div>
           </div>
       </div>
+
     </div>
-    
+
 </div>
 </body>
 </html>
+

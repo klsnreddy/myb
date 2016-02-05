@@ -22,3 +22,40 @@ var Menu = angular.module('Menu',[]);
       this.menu = menu;
   
   }]);
+
+
+
+jQuery(document).ready(function() {
+    
+    /* Category Level */
+    //Minify/show the Sub Categories once click on Category name.
+    jQuery('ul.category-name').click(function() {
+        jQuery(this).siblings('ul.category-name-minified').show();
+        jQuery(this).hide();
+        jQuery(this).siblings('div.sub-cat').hide();
+    });
+    
+    //Expand/hide the Sub Categories once click on Category name.
+    jQuery('ul.category-name-minified').click(function() {
+        jQuery(this).siblings('ul.category-name').show();
+        jQuery(this).hide();
+        jQuery(this).siblings('div.sub-cat').show();
+    });
+    
+    
+    /* Sub Category level */
+    //Minify/show the Items once click on Sub category name.
+    jQuery('ul.sub-cat-name').click(function() {
+        jQuery(this).siblings('ul.sub-cat-name-minified').show();
+        jQuery(this).hide();
+        jQuery(this).siblings('ul.items').hide();
+    });
+    
+    //Expand/hide the Items once click on Sub category name.
+    jQuery('ul.sub-cat-name-minified').click(function() {
+        jQuery(this).siblings('ul.sub-cat-name').show();
+        jQuery(this).hide();
+        jQuery(this).siblings('ul.items').show();
+    });
+    
+});

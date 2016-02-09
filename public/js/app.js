@@ -39,15 +39,19 @@ Menu.config(function ($routeProvider) {
 });
 
 
-Menu.controller('MenuCtrl', ['$scope',
-  function ($scope) {
+Menu.controller('MenuCtrl', ['$scope','$log',
+  function ($scope, $log) {
     this.menu = menu;
     
-    this.addItem = function() {
-        var count = jQuery(this).val();
+    this.addItem = function($event) {
+       /* var count = angular.element(this).val();
         var cat = jQuery(this).data("cat");
         var subCat = jQuery(this).data("sub-cat");
         var item = jQuery(this).data("item");
+        alert(count);
+        alert(cat);*/
+        $log.debug($event);
+        
     }
       
 }]);
@@ -89,10 +93,30 @@ jQuery(document).ready(function() {
     
     
     //Update Item Count on change.
-    /*jQuery(".itemCount").change(function() {
+    jQuery(".itemCount").change(function() {
         var count = jQuery(this).val();
         var cat = jQuery(this).data("cat");
         var subCat = jQuery(this).data("sub-cat");
         var item = jQuery(this).data("item");
-    });*/
+        
+        var cats = MYB.order.cat;
+        var currCat = cats[cat] || {};
+        var subs = currCat.sub || [];
+        var currSub = subs[subCat] || {};
+        var items = currSub.items || [];
+        if(items[item] != undefined) {
+            console.log("Previous count : "+items[item].count);
+            items[item].count = count;
+        } else {
+            items[item] = {};
+            items[item].count = count;
+        }
+        
+        currSub.items = items;
+        subs[subCat] = currSub;
+        currCat.sub = subs;
+        cats[cat] = currCat;
+        
+        console.log(cats);
+    });
 });

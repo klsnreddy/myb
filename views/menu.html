@@ -6,9 +6,10 @@
         <!--
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
         -->
+        <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.min.js"></script>
-        <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
+        
         <script>
            var menu = <%- JSON.stringify(menu)%>;
         </script>
@@ -49,7 +50,7 @@
                           <span class="col-xs-4 col-sm-4 ng-md-2">
                               <span style="float: right">{{item.price}} <span ng-if="item.price < 10">&nbsp;</span>
                               <input type="text" name="input" data-cat={{cat._id}} data-sub-cat={{sub.id}} data-item={{item.id}}
-                                     class="itemCount" required ng-trim="false" size="1" style="float: right" ng-blur="mc.addItem()">
+                                     class="itemCount" required ng-trim="false" size="1" style="float: right">
                               </span>
                           </span>
                       </li>

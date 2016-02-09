@@ -1,27 +1,56 @@
+//Config Variable.
+var MYB = {};
+MYB.order = {};
+MYB.order.cat = [];
+
+
 // This code only runs on the client
   angular.module('simple-todos',[]);
  
   angular.module('simple-todos').controller('TodosListCtrl', ['$scope',
     function ($scope) {
       $scope.tasks = tasks;
-     /*
- $scope.tasks = [
-        { text: 'This is task 1' },
-        { text: 'This is task 2' },
-        { text: 'This is task 3' }
-      ];
-*/
   }]);
 
 
 //Menu Page
-var Menu = angular.module('Menu',[]);
+var Menu = angular.module('Menu',['ngRoute']);
  
-  Menu.controller('MenuCtrl', ['$scope',
-    function ($scope) {
-      this.menu = menu;
-  
-  }]);
+
+Menu.config(function ($routeProvider) {
+    
+    $routeProvider
+    
+    .when('/', {
+        templateUrl: 'views/index.html',
+        controller: 'TodosListCtrl'
+    })
+    
+    .when('/menu', {
+        templateUrl: 'views/menu.html',
+        controller: 'MenuCtrl'
+    })
+    
+/*    .when('/second/:num', {
+        templateUrl: 'pages/second.html',
+        controller: 'secondController'
+    })*/
+    
+});
+
+
+Menu.controller('MenuCtrl', ['$scope',
+  function ($scope) {
+    this.menu = menu;
+    
+    this.addItem = function() {
+        var count = jQuery(this).val();
+        var cat = jQuery(this).data("cat");
+        var subCat = jQuery(this).data("sub-cat");
+        var item = jQuery(this).data("item");
+    }
+      
+}]);
 
 
 
@@ -58,4 +87,12 @@ jQuery(document).ready(function() {
         jQuery(this).siblings('ul.items').show();
     });
     
+    
+    //Update Item Count on change.
+    /*jQuery(".itemCount").change(function() {
+        var count = jQuery(this).val();
+        var cat = jQuery(this).data("cat");
+        var subCat = jQuery(this).data("sub-cat");
+        var item = jQuery(this).data("item");
+    });*/
 });

@@ -14,6 +14,7 @@
            var menu = <%- JSON.stringify(menu)%>;
         </script>
         <script src="/assets/js/app.js"></script>
+        <script src="/assets/js/directives.js"></script>
         <link rel="stylesheet" type="text/css" href="/assets/css/app.css">
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     </head>
@@ -37,25 +38,7 @@
               <span class="menu-icon glyphicon glyphicon-menu-down"></span></li></ul>
           <!-- Sub Categories -->
           <div class="row sub-cat">
-              <div class="col-xs-12 col-sm-12 col-md-6" ng-repeat="sub in cat.sub">
-                  <!-- Sub Category Header -->
-                  <ul class="sub-cat-name bg-info"><li>{{sub.name}}
-                      <span class="menu-icon glyphicon glyphicon-menu-up"></span></li></ul>
-                  <ul class="sub-cat-name-minified bg-info" style="display:none"><li>{{sub.name}}
-                      <span class="menu-icon glyphicon glyphicon-menu-down"></span></li></ul>
-                  <!-- Items section -->
-                  <ul class="items">
-                      <li class="row item" ng-repeat="item in sub.items">
-                          <span class="col-xs-8 col-sm-8 ng-md-4">{{item.name}}</span>
-                          <span class="col-xs-4 col-sm-4 ng-md-2">
-                              <span style="float: right">{{item.price}} <span ng-if="item.price < 10">&nbsp;</span>
-                              <input type="text" name="input" data-cat={{cat._id}} data-sub-cat={{sub.id}} data-item={{item.id}}
-                                     class="itemCount" required ng-trim="false" size="1" style="float: right">
-                              </span>
-                          </span>
-                      </li>
-                  </ul>
-              </div>
+              <item-list sub="sub"  class="col-xs-12 col-sm-12 col-md-6" ng-repeat="sub in cat.sub"/>
           </div>
       </div>
 
@@ -72,52 +55,13 @@
           <!-- Sub Categories -->
           <div class="row sub-cat">
               <div class="col-xs-12 col-sm-12 col-md-6">
-                  <!-- Vegetarian Sub Category -->
-                  <div ng-repeat="sub in cat.sub | filter: {id: 'V'}">
-                      <!-- Sub Category Header -->
-                      <ul class="sub-cat-name bg-info"><li>{{sub.name}}
-                          <span class="menu-icon glyphicon glyphicon-menu-up"></span></li></ul>
-                      <ul class="sub-cat-name-minified bg-info" style="display:none"><li>{{sub.name}}
-                          <span class="menu-icon glyphicon glyphicon-menu-down"></span></li></ul>
-                      <!-- Items section -->
-                      <ul class="items">
-                          <li class="row item" ng-repeat="item in sub.items">
-                              <span class="col-xs-8 col-sm-8 ng-md-4">{{item.name}}</span>
-                              <span class="col-xs-4 col-sm-4 ng-md-2">{{item.price}}</span>
-                          </li>
-                      </ul>
-                  </div>
-                  <!-- Non-Vegetarian Sub Category -->
-                  <div ng-repeat="sub in cat.sub | filter: {id: 'N'}">
-                      <!-- Sub Category Header -->
-                      <ul class="sub-cat-name bg-info"><li>{{sub.name}}
-                          <span class="menu-icon glyphicon glyphicon-menu-up"></span></li></ul>
-                      <ul class="sub-cat-name-minified bg-info" style="display:none"><li>{{sub.name}}
-                          <span class="menu-icon glyphicon glyphicon-menu-down"></span></li></ul>
-                      <!-- Items section -->
-                      <ul class="items">
-                          <li class="row item" ng-repeat="item in sub.items">
-                              <span class="col-xs-8 col-sm-8 ng-md-4">{{item.name}}</span>
-                              <span class="col-xs-4 col-sm-4 ng-md-2">{{item.price}}</span>
-                          </li>
-                      </ul>
-                  </div>
+                  <!-- Vegetarian and Non-Vegetarian Sub Category -->
+                  <item-list sub="sub" ng-repeat="sub in cat.sub" ng-if="sub.id !== 'F'"/>
               </div>
+
               <!-- Family Pack Sub Category -->
-              <div class="col-xs-12 col-sm-12 col-md-6" ng-repeat="sub in cat.sub | filter: {id: 'F'}">
-                 <!-- Sub Category Header -->
-                  <ul class="sub-cat-name bg-info"><li>{{sub.name}}
-                      <span class="menu-icon glyphicon glyphicon-menu-up"></span></li></ul>
-                  <ul class="sub-cat-name-minified bg-info" style="display:none"><li>{{sub.name}}
-                      <span class="menu-icon glyphicon glyphicon-menu-down"></span></li></ul>
-                  <!-- Items section -->
-                  <ul class="items">
-                      <li class="row item" ng-repeat="item in sub.items">
-                          <span class="col-xs-8 col-sm-8 ng-md-4">{{item.name}}</span>
-                          <span class="col-xs-4 col-sm-4 ng-md-2">{{item.price}}</span>
-                      </li>
-                  </ul>
-              </div>
+              <item-list sub="sub" class="col-xs-12 col-sm-12 col-md-6" ng-repeat="sub in cat.sub | filter: {id: 'F'}"/>
+                
           </div>
       </div>
 

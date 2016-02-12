@@ -1,26 +1,49 @@
-<html>
-	<head>
-    <title>Todo List</title>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My Bawarchi</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+        <!--
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+        -->
+        <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.min.js"></script>
+        
         <script>
            var tasks = <%- JSON.stringify(tasks)%>;
         </script>
         <script src="/assets/js/app.js"></script>
+        <script src="/assets/js/directives.js"></script>
+        <script src="/assets/js/jq-events.js"></script>
+            
         <link rel="stylesheet" type="text/css" href="/assets/css/app.css">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     </head>
- 
-<body>
-<div class="container"
-     ng-app="simple-todos"
-     ng-controller="TodosListCtrl">
-    <header>
-    <h1>Todo List</h1>
-  </header>
- 
-  <ul>
-    <li ng-repeat="task in tasks">{{task.text}}</li>
-  </ul>
-</div>
-</body>
+    <body>
+        <div class="container" style="min-height: inherit">    
+            <header>
+                <nav class="navbar navbar-default">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/">MyB</a>
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="/menu"><i></i> Menu</a></li>
+                        <li><a href="#/order"><i></i> Order</a></li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+
+        <div class="container"
+             ng-app="simple-todos"
+             ng-controller="TodosListCtrl">
+
+          <ul>
+            <li ng-repeat="task in tasks">{{task.text}}</li>
+          </ul>
+        </div>
+    </body>
 </html>

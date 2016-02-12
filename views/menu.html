@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-        <head>
-    <title>Todo List</title>
+    <head>
+        <title>My Bawarchi</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
@@ -15,59 +15,73 @@
         </script>
         <script src="/assets/js/app.js"></script>
         <script src="/assets/js/directives.js"></script>
+        <script src="/assets/js/jq-events.js"></script>
+            
         <link rel="stylesheet" type="text/css" href="/assets/css/app.css">
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     </head>
+    <body>
+        <div class="container" style="min-height: inherit">    
+            <header>
+                <nav class="navbar navbar-default">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/">MyB</a>
+                    </div>
 
-<body>
-<div class="container"
-     ng-app="Menu"
-     ng-controller="MenuCtrl as mc">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="/menu"><i></i> Menu</a></li>
+                        <li><a href="#/order"><i></i> Order</a></li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
 
-    <header>
-        <h1>Menu</h1>
-    </header>
+        <div class="container"
+             ng-app="Menu"
+             ng-controller="MenuCtrl as mc">
 
-    <!-- Appetisers -->
-    <div class="row category" ng-repeat="cat in mc.menu | filter: {_id: 'A'}">
-      <div class="col-xs-12 col-sm-12 col-md-12">
-          <!-- Category Header -->
-          <ul class="bg-primary category-name"><li>{{cat.name}}
-              <span class="menu-icon glyphicon glyphicon-menu-up"></span></li></ul>
-          <ul class="bg-primary category-name-minified" style="display:none"><li>{{cat.name}}
-              <span class="menu-icon glyphicon glyphicon-menu-down"></span></li></ul>
-          <!-- Sub Categories -->
-          <div class="row sub-cat">
-              <item-list sub="sub"  class="col-xs-12 col-sm-12 col-md-6" ng-repeat="sub in cat.sub"/>
-          </div>
-      </div>
 
-    </div>
-    <hr>
-    <!-- Biryani -->
-    <div class="row category" ng-repeat="cat in mc.menu | filter: {_id: 'B'}">
-      <div class="col-xs-12 col-sm-12 col-md-12">
-          <!-- Category Header -->
-          <ul class="bg-primary category-name"><li>{{cat.name}}
-              <span class="menu-icon glyphicon glyphicon-menu-up"></span></li></ul>
-          <ul class="bg-primary category-name-minified" style="display:none"><li>{{cat.name}}
-              <span class="menu-icon glyphicon glyphicon-menu-down"></span></li></ul>
-          <!-- Sub Categories -->
-          <div class="row sub-cat">
-              <div class="col-xs-12 col-sm-12 col-md-6">
-                  <!-- Vegetarian and Non-Vegetarian Sub Category -->
-                  <item-list sub="sub" ng-repeat="sub in cat.sub" ng-if="sub.id !== 'F'"/>
+            <!-- Appetisers -->
+            <div class="row category" ng-repeat="cat in mc.menu | filter: {_id: 'A'}">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                  <!-- Category Header -->
+                  <ul class="bg-primary category-name"><li>{{cat.name}}
+                      <span class="menu-icon glyphicon glyphicon-menu-up"></span></li></ul>
+                  <ul class="bg-primary category-name-minified" style="display:none"><li>{{cat.name}}
+                      <span class="menu-icon glyphicon glyphicon-menu-down"></span></li></ul>
+                  <!-- Sub Categories -->
+                  <div class="row sub-cat">
+                      <item-list sub="sub"  class="col-xs-12 col-sm-12 col-md-6" ng-repeat="sub in cat.sub"/>
+                  </div>
               </div>
 
-              <!-- Family Pack Sub Category -->
-              <item-list sub="sub" class="col-xs-12 col-sm-12 col-md-6" ng-repeat="sub in cat.sub | filter: {id: 'F'}"/>
-                
-          </div>
-      </div>
+            </div>
+            <hr>
+            <!-- Biryani -->
+            <div class="row category" ng-repeat="cat in mc.menu | filter: {_id: 'B'}">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                  <!-- Category Header -->
+                  <ul class="bg-primary category-name"><li>{{cat.name}}
+                      <span class="menu-icon glyphicon glyphicon-menu-up"></span></li></ul>
+                  <ul class="bg-primary category-name-minified" style="display:none"><li>{{cat.name}}
+                      <span class="menu-icon glyphicon glyphicon-menu-down"></span></li></ul>
+                  <!-- Sub Categories -->
+                  <div class="row sub-cat">
+                      <div class="col-xs-12 col-sm-12 col-md-6">
+                          <!-- Vegetarian and Non-Vegetarian Sub Category -->
+                          <item-list sub="sub" ng-repeat="sub in cat.sub" ng-if="sub.id !== 'F'"/>
+                      </div>
 
-    </div>
+                      <!-- Family Pack Sub Category -->
+                      <item-list sub="sub" class="col-xs-12 col-sm-12 col-md-6" ng-repeat="sub in cat.sub | filter: {id: 'F'}"/>
 
-</div>
-</body>
+                  </div>
+              </div>
+
+            </div>
+
+        </div>
+    </body>
 </html>
 

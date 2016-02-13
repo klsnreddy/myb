@@ -1,4 +1,4 @@
-Menu.directive("itemList", function() {
+Main.directive("itemList", function() {
    return {
        restrict: 'AECM',
        templateUrl: 'assets/layout/itemList.html',

@@ -24,10 +24,16 @@ var tasks = mongoose.model('tasks', tasksSchema);
 app.get('/', function(req, res) {
     tasks.find({}, function(err, tsks) {	
       if(err) console.log(err);
-      res.render('index', {tasks : tsks});
+      res.render('index');
     });	
 });
 
+app.get('/tasks', function(req, res) {
+    tasks.find({}, function(err, tsks) {	
+      if(err) console.log(err);
+      res.json(tsks);
+    });	
+});
 
 //Menu page.
 var menuSchema = require('./lib/menuSchema.js');

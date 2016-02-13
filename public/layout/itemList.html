@@ -11,7 +11,7 @@
           <span class="col-xs-4 col-sm-4 ng-md-2">
               <span style="float: right">{{item.price}} <span ng-if="item.price < 10">&nbsp;</span>
               <input type="text" name="input" data-cat={{cat._id}} data-sub-cat={{sub.id}} data-item={{item.id}}
-                     class="itemCount" required ng-trim="false" size="1" style="float: right">
+                     class="itemCount" required ng-trim="false" size="1" style="float: right" ng-model="item.count">
               </span>
           </span>
       </li>

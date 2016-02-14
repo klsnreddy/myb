@@ -1,0 +1,43 @@
+<div class="container"
+     ng-app="CheckOut"
+     ng-controller="CheckOutCtrl">
+
+
+    <!-- Appetisers -->
+    <div class="row category" ng-repeat="cat in order">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+          <!-- Category Header -->
+          <!--<ul class="bg-primary category-name"><li>{{cat.name}}
+              <span class="menu-icon glyphicon glyphicon-menu-up"></span></li></ul>
+          <ul class="bg-primary category-name-minified" style="display:none"><li>{{cat.name}}
+              <span class="menu-icon glyphicon glyphicon-menu-down"></span></li></ul>-->
+          <!-- Sub Categories -->
+          <div class="row sub-cat">
+              <div class="col-xs-12 col-sm-12 col-md-6" ng-repeat="sub in cat.sub">
+                  <!-- Sub Category Header -->
+                  <!--<ul class="sub-cat-name bg-info"><li>{{sub.name}}
+                      <span class="menu-icon glyphicon glyphicon-menu-up"></span></li></ul>
+                  <ul class="sub-cat-name-minified bg-info" style="display:none"><li>{{sub.name}}
+                      <span class="menu-icon glyphicon glyphicon-menu-down"></span></li></ul>-->
+                  <!-- Items section -->
+                  <ul class="items">
+                      <li class="row item" ng-repeat="item in sub.items" ng-if="item.count !=='undefined' && item.count > 0">
+                          <span class="col-xs-8 col-sm-8 ng-md-4">{{item.name}}</span>
+                          <span class="col-xs-4 col-sm-4 ng-md-2">
+                              <span style="float: right">{{item.price}} <span ng-if="item.price < 10">&nbsp;</span>
+                              <span style="float: right">{{item.count}}</span>
+                              <!--<input type="text" name="input" data-cat={{cat._id}} data-sub-cat={{sub.id}} data-item={{item.id}}
+                                     class="itemCount" required ng-trim="false" size="1" style="float: right" ng-model="item.count">-->
+                              </span>
+                          </span>
+                      </li>
+                  </ul>
+                </div>
+          </div>
+      </div>
+
+    </div>
+    <hr>
+
+</div>
+

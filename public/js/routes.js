@@ -37,9 +37,9 @@
             controller: 'MenuCtrl'
         })
 
-        .when('/second/:num', {
-            templateUrl: 'assets/layout/second.html',
-            controller: 'secondController'
+        .when('/checkOut', {
+            templateUrl: 'assets/layout/checkOut.html',
+            controller: 'CheckOutCtrl'
         })
         
         

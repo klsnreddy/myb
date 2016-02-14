@@ -21,16 +21,28 @@ function ($scope, $http) {
 
 
 //Menu Controller
-Main.controller('MenuCtrl', ['$scope','$log', '$http',
-  function ($scope, $log, $http) {
+Main.controller('MenuCtrl', ['$scope','$log', '$http', '$MenuService',
+  function ($scope, $log, $http, $MenuService) {
+    if($MenuService.menu == undefined) {
+        $http.get('/menu')
+            .success(function (result) {
+                $scope.menu = result;
+                $MenuService.menu = $scope.menu;
+            })
+            .error(function (data, status) {
+                console.log(data);
+            });
+    } else {
+        $scope.menu = $MenuService.menu;
+    }
+      
+}]);
+
+
+//Check Out Controller
+Main.controller('CheckOutCtrl', ['$scope','$log', '$http', '$MenuService',
+  function ($scope, $log, $http, $MenuService) {
     
-    $http.get('/menu')
-        .success(function (result) {
-            $scope.menu = result;
-            window.mc1 = $scope.menu;
-        })
-        .error(function (data, status) {
-            console.log(data);
-        });
+    $scope.order = $MenuService.menu;
       
 }]);

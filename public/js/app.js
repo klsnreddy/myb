@@ -1,7 +1,5 @@
 //Config Variable.
 var MYB = {};
-MYB.order = {};
-MYB.order.cat = [];
 
 var Main = angular.module('Main', ['ngRoute']);
 

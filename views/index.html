@@ -8,7 +8,7 @@
         -->
         <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
-        <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>-->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.min.js"></script>
         
         
@@ -33,15 +33,20 @@
                     </div>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#/"><i class="fa fa-home"></i> Home</a></li>
+                        <li><a ui-sref="home"><i class="fa fa-home"></i> Home</a></li>
+                        <li><a ui-sref="menu"><i></i> Menu</a></li>
+                        <li><a ui-sref="checkOut"><i></i> Check Out</a></li>
+                        
+                        <!--<li><a href="#/"><i class="fa fa-home"></i> Home</a></li>
                         <li><a href="#/menu"><i></i> Menu</a></li>
-                        <li><a href="#/checkOut"><i></i> Check Out</a></li>
+                        <li><a href="#/checkOut"><i></i> Check Out</a></li>-->
                     </ul>
                 </nav>
             </header>
         </div>
         
-        <div ng-view></div>
+        <!--<div ng-view></div>-->
+        <div ui-view></div>
         
     </body>
 </html>

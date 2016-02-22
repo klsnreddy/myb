@@ -1,7 +1,9 @@
 //Config Variable.
 var MYB = {};
 
-var Main = angular.module('Main', ['ngRoute']);
+var Main = angular.module('Main', ['ui.router']);
+
+//var Main = angular.module('Main', ['ngRoute']);
 
 
 // This code only runs on the client

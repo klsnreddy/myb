@@ -1,30 +1,30 @@
 /*(function() {*/
     
     // ROUTES
-    /*Main.config(function ($stateProvider, $urlRouterProvider) {
+    Main.config(function ($stateProvider, $urlRouterProvider) {
 
         $stateProvider
             .state("home", {
                 url: "/home",
-                templateUrl: 'assets/layout/todo.html',
-                controller: 'TodosListCtrl'
+                templateUrl: 'assets/layout/home.html',
+                controller: 'HomeCtrl'
             })
             .state("menu", {
                 url: "/menu",
                 templateUrl: 'assets/layout/menu.html',
                 controller: 'MenuCtrl'
             })
-            .state("order", {
-                url: "/order",
-                templateUrl: 'assets/layout/order.html',
-                controller: 'OrderCtrl'
+            .state("checkOut", {
+                url: "/checkOut",
+                templateUrl: 'assets/layout/checkOut.html',
+                controller: 'CheckOutCtrl'
             })
 
         $urlRouterProvider.otherwise('home');
-    });*/
+    });
 
 
-    Main.config(function ($routeProvider) {
+    /*Main.config(function ($routeProvider) {
         $routeProvider
 
         .when('/', {
@@ -43,28 +43,8 @@
         })
         
         
-    });
-
-    /*Menu.config(function ($routeProvider) {
-
-        $routeProvider
-
-        .when('/', {
-            templateUrl: 'views/index.html',
-            controller: 'TodosListCtrl'
-        })
-
-        .when('/menu', {
-            alert('one');
-            templateUrl: 'views/menu.html',
-            controller: 'MenuCtrl'
-        })
-
-        .when('/second/:num', {
-            templateUrl: 'pages/second.html',
-            controller: 'secondController'
-        })
-
     });*/
+
+    
     
 /*})();*/

@@ -6,16 +6,16 @@ Main.controller('MainCtrl', ['$scope', '$log', '$http',
 
 
 //Todo controller
-Main.controller('TodosListCtrl', ['$scope', '$http',
+Main.controller('HomeCtrl', ['$scope', '$http',
 function ($scope, $http) {
     
-    $http.get('/tasks')
+    /*$http.get('/tasks')
         .success(function (result) {
             $scope.tasks = result;
         })
         .error(function (data, status) {
             console.log(data);
-        });
+        });*/
 
 }]);
 

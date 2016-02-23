@@ -19,6 +19,11 @@
                 templateUrl: 'assets/layout/checkOut.html',
                 controller: 'CheckOutCtrl'
             })
+            .state("customer", {
+                url: "/menu",
+                templateUrl: 'assets/layout/menu.html',
+                controller: 'MenuCtrl'
+            })
 
         $urlRouterProvider.otherwise('home');
     });

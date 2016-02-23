@@ -8,15 +8,19 @@
             <img src="/assets/img/Biryani.png">
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6">
-            <div style="padding: 10px 10px 10px 10px">
+            <div style="padding: 10px 10px 10px 10px" ng-model="customer">
                 <label>Please provide 10 digit Telephone number.</label>
-                <input type="tel" ng-model="mtn">
-                <label>First Name: </label>
-                <input type="text" ng-model="firstname">
-                <label>Last Name: </label>
-                <input type="text" ng-model="lastname">
+                <p>
+                    <input type="tel" ng-model="customer.mtn">
+                </p>
+                <p>
+                    <input type="text" ng-model="customer.firstname" placeholder="First Name">
+                </p>
+                <p>
+                    <input type="text" ng-model="customer.lastname" placeholder="Last Name">
+                </p>
                 <div>
-                    <a href="#/customer">Continue</a>
+                    <a ui-sref="customer">Register</a>
                 </div>
             </div>
         </div>

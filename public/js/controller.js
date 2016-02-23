@@ -6,43 +6,44 @@ Main.controller('MainCtrl', ['$scope', '$log', '$http',
 
 
 //Todo controller
-Main.controller('HomeCtrl', ['$scope', '$http',
-function ($scope, $http) {
+Main.controller('HomeCtrl', ['$scope', '$http', '$MybService',
+function ($scope, $http, $MybService) {
     
-    /*$http.get('/tasks')
-        .success(function (result) {
-            $scope.tasks = result;
-        })
-        .error(function (data, status) {
-            console.log(data);
-        });*/
-
+    if($MybService.customer == undefined) {
+        $MybService.customer = {};                     
+    }
+    $scope.customer = $MybService.customer;
 }]);
 
 
 //Menu Controller
-Main.controller('MenuCtrl', ['$scope','$log', '$http', '$MenuService',
-  function ($scope, $log, $http, $MenuService) {
-    if($MenuService.menu == undefined) {
+Main.controller('MenuCtrl', ['$scope','$log', '$http', '$MybService',
+  function ($scope, $log, $http, $MybService) {
+    //Register the customer
+    if(!$MybService.registerCustomer())   {
+        $scope.errorMsg = $MybService.errorMsg;
+    }
+      
+    if($MybService.menu == undefined) {
         $http.get('/menu')
             .success(function (result) {
                 $scope.menu = result;
-                $MenuService.menu = $scope.menu;
+                $MybService.menu = $scope.menu;
             })
             .error(function (data, status) {
                 console.log(data);
             });
     } else {
-        $scope.menu = $MenuService.menu;
+        $scope.menu = $MybService.menu;
     }
       
 }]);
 
 
 //Check Out Controller
-Main.controller('CheckOutCtrl', ['$scope','$log', '$http', '$MenuService',
-  function ($scope, $log, $http, $MenuService) {
+Main.controller('CheckOutCtrl', ['$scope','$log', '$http', '$MybService',
+  function ($scope, $log, $http, $MybService) {
     
-    $scope.order = $MenuService.menu;
+    $scope.order = $MybService.menu;
       
 }]);

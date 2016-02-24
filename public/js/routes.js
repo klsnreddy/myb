@@ -20,7 +20,7 @@
                 controller: 'CheckOutCtrl'
             })
             .state("customer", {
-                url: "/menu",
+//                url: "/menu",
                 templateUrl: 'assets/layout/menu.html',
                 controller: 'MenuCtrl'
             })

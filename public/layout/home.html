@@ -11,13 +11,13 @@
             <div style="padding: 10px 10px 10px 10px" ng-model="customer">
                 <label>Please provide 10 digit Telephone number.</label>
                 <p>
-                    <input type="tel" ng-model="customer.mtn">
+                    <input type="tel" ng-model="customer.mtn" placeholder="Telephone number" required ng-minlength="10" ng-maxlength="10">
                 </p>
                 <p>
-                    <input type="text" ng-model="customer.firstname" placeholder="First Name">
+                    <input type="text" ng-model="customer.firstname" placeholder="First Name" required>
                 </p>
                 <p>
-                    <input type="text" ng-model="customer.lastname" placeholder="Last Name">
+                    <input type="text" ng-model="customer.lastname" placeholder="Last Name" required>
                 </p>
                 <div>
                     <a ui-sref="customer">Register</a>

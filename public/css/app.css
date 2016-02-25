@@ -171,3 +171,9 @@ input[type=number]::-webkit-outer-spin-button {
     padding-bottom: 5px;
   }
 }
+
+@media (max-width: 500px) { 
+    .navbar-right { 
+        display: none 
+    }
+}

@@ -17,8 +17,8 @@ function ($scope, $http, $MybService) {
 
 
 //Menu Controller
-Main.controller('MenuCtrl', ['$scope','$log', '$http', '$MybService',
-  function ($scope, $log, $http, $MybService) {
+Main.controller('MenuCtrl', ['$scope','$log', '$http', '$MybService', '$OrderService',
+  function ($scope, $log, $http, $MybService, $OrderService) {
     //Register the customer
     if(!$MybService.registerCustomer())   {
         $scope.errorMsg = $MybService.errorMsg;
@@ -37,16 +37,16 @@ Main.controller('MenuCtrl', ['$scope','$log', '$http', '$MybService',
         $scope.menu = $MybService.menu;
     }
     
-    $scope.addToOrder = function(sub, element) {
-        console.log(element);
-    }
+    //Update the order object 
+    $scope.addToOrder = $OrderService.addToOrder;
 }]);
 
 
 //Check Out Controller
-Main.controller('CheckOutCtrl', ['$scope','$log', '$http', '$MybService',
-  function ($scope, $log, $http, $MybService) {
+Main.controller('CheckOutCtrl', ['$scope','$log', '$http', '$OrderService',
+  function ($scope, $log, $http, $OrderService) {
     
-    $scope.order = $MybService.menu;
+    $scope.order = $OrderService.order;
+    $scope.orderTotal = $OrderService.orderTotal;
       
 }]);

@@ -13,7 +13,7 @@
               <input type="text" name="input" data-cat={{cat._id}} data-sub-cat={{sub.id}} data-item={{item.id}}
                     data-item-name="{{item.name}}" data-item-price="{{item.price}}" 
                      class="itemCount" required ng-trim="false" size="1" style="float: right" ng-model="item.count"
-                     ng-blur="addToOrder(item, this)">
+                     ng-blur="addToOrder(item)">
               </span>
           </span>
       </li>

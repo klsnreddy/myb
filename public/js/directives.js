@@ -4,7 +4,8 @@ Main.directive("itemList", function() {
        templateUrl: 'assets/layout/itemList.html',
        replace: true,
        scope: {
-           sub: "=",
+           sub: "="
+           ,addToOrder : "&"
        },
       link: function(scope, element, attrs) {
            //Sub Category level 

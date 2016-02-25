@@ -36,7 +36,10 @@ Main.controller('MenuCtrl', ['$scope','$log', '$http', '$MybService',
     } else {
         $scope.menu = $MybService.menu;
     }
-      
+    
+    $scope.addToOrder = function(sub, element) {
+        console.log(element);
+    }
 }]);
 
 

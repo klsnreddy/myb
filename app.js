@@ -33,4 +33,9 @@ var customerSchema = require('./lib/customerSchema.js');
 var customer = require('./lib/customer.js');
 customer(app, customerSchema(mongoose));
 
+//Orders
+var orderSchema = require('./lib/orderSchema.js');
+var order = require('./lib/order.js');
+order(app, orderSchema(mongoose));
+
 app.listen(port); 

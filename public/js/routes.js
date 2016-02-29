@@ -14,10 +14,15 @@
                 templateUrl: 'assets/layout/menu.html',
                 controller: 'MenuCtrl'
             })
-            .state("checkOut", {
-                url: "/checkOut",
-                templateUrl: 'assets/layout/checkOut.html',
-                controller: 'CheckOutCtrl'
+            .state("review", {
+                url: "/review",
+                templateUrl: 'assets/layout/review.html',
+                controller: 'ReviewCtrl'
+            })
+            .state("review.order", {
+//                url: "/review",
+                templateUrl: 'assets/layout/success.html',
+                controller: 'OrderCtrl'
             })
             .state("customer", {
 //                url: "/menu",
@@ -27,29 +32,3 @@
 
         $urlRouterProvider.otherwise('home');
     });
-
-
-    /*Main.config(function ($routeProvider) {
-        $routeProvider
-
-        .when('/', {
-            templateUrl: 'assets/layout/todo.html',
-            controller: 'TodosListCtrl'
-        })
-
-        .when('/menu', {
-            templateUrl: 'assets/layout/menu.html',
-            controller: 'MenuCtrl'
-        })
-
-        .when('/checkOut', {
-            templateUrl: 'assets/layout/checkOut.html',
-            controller: 'CheckOutCtrl'
-        })
-        
-        
-    });*/
-
-    
-    
-/*})();*/

@@ -1,5 +1,5 @@
 //Services
-Main.service("$MybService", ['$http', function($http) {
+Main.service("$MybService", ['$http', '$log', function($http, $log) {
    var mybSvs = this;
    mybSvs.menu = undefined;
    mybSvs.customer = undefined;
@@ -24,7 +24,7 @@ Main.service("$MybService", ['$http', function($http) {
                     return true;
                 })
                 .error(function(data, status) {
-                    console.log(status);
+                    $log.info(status);
                     mybSvs.errorMsg = status + " Failed to register the customer : " + cust.mtn;
                     return false;
                 });
@@ -36,13 +36,15 @@ Main.service("$MybService", ['$http', function($http) {
    
 }]);
 
-Main.service("$OrderService", ['$http', function($http) {
+Main.service("$OrderService", ['$http', '$log', '$MybService', function($http, $log, $MybService) {
    var orderSvs = this;
    orderSvs.errorMsg = undefined;
    orderSvs.order = undefined;
    orderSvs.orderTotal = 0.00;
+   orderSvs.orderSaved = false;
    
     orderSvs.addToOrder = function(item) {
+        orderSvs.orderSaved = false;
         if(orderSvs.order == undefined)
             orderSvs.order = {};
         var order = orderSvs.order;
@@ -68,5 +70,33 @@ Main.service("$OrderService", ['$http', function($http) {
                 orderSvs.orderTotal += order[prop].total;
         orderSvs.orderTotal = Math.round(orderSvs.orderTotal * 1e2 ) / 1e2;
     }
+    
+    //Submit Order
+   orderSvs.submitOrder = function() {
+       var cust = $MybService.customer;
+       
+       //populate the order object.
+       var order = {};
+       order.mtn = cust.mtn;
+       order.firstname = cust.firstname;
+       order.lastname = cust.lastname;
+       order.total = orderSvs.orderTotal;
+       order.status = 0;
+       order.createdDate = new Date();
+       order.modifiedDate = new Date();
+       order.fulfillDate = new Date();
+       order.items = Object.keys(orderSvs.order).map(function(key) { return orderSvs.order[key] });
+       
+       //Save the order
+       $http.post('/order', order)
+            .success(function(data, status) {
+                orderSvs.orderSaved = true
+                orderSvs.order = undefined
+                $log.info("Order saved successfully")
+            })
+            .error(function(data, status) {
+                $log.info("Order save failed: "+status)
+            });
+   }
    
 }]);

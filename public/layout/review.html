@@ -1,5 +1,7 @@
 <div class="container"
-     ng-app="CheckOut">
+     ng-app="Review">
+
+    <div ui-view></div>
 
     <!-- Appetisers -->
     <div class="row" ng-repeat="item in order">
@@ -17,6 +19,7 @@
         <span class="col-xs-6 col-sm-6 ng-md-6"><span style="float:right"> {{orderTotal}} </span></span>
     </div>
      <hr>
-    
+    <a ui-sref="review.order" class="btn btn-primary" ng-hide="orderSaved || order == undefined"><i></i> Order</a>
+     <div ui-view></div>
 </div>
 

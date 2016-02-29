@@ -1,18 +1,18 @@
 //Main Controller
-Main.controller('MainCtrl', ['$scope', '$log', '$http', 
-    function($scope, $log, $http) {
-        
-}]);
+Main.controller('MainCtrl', 
+                ['$scope', '$log', '$http',
+    function ($scope, $log, $http) {
+    }]);
 
 
 //Todo controller
 Main.controller('HomeCtrl', ['$scope', '$http', '$MybService',
-function ($scope, $http, $MybService) {
+    function ($scope, $http, $MybService) {
     
-    if($MybService.customer == undefined) {
-        $MybService.customer = {};                     
-    }
-    $scope.customer = $MybService.customer;
+        if($MybService.customer == undefined) {
+            $MybService.customer = {};                     
+        }
+        $scope.customer = $MybService.customer;
 }]);
 
 
@@ -42,11 +42,22 @@ Main.controller('MenuCtrl', ['$scope','$log', '$http', '$MybService', '$OrderSer
 }]);
 
 
-//Check Out Controller
-Main.controller('CheckOutCtrl', ['$scope','$log', '$http', '$OrderService',
+//Review Controller
+Main.controller('ReviewCtrl', ['$scope','$log', '$http', '$OrderService',
   function ($scope, $log, $http, $OrderService) {
     
-    $scope.order = $OrderService.order;
-    $scope.orderTotal = $OrderService.orderTotal;
+    $scope.order = $OrderService.order
+    $scope.orderTotal = $OrderService.orderTotal
+    $scope.orderSaved = $OrderService.orderSaved  
+}]);
+
+
+//Check Out Controller
+Main.controller('OrderCtrl', ['$scope','$log', '$http', '$MybService', '$OrderService', 
+  function ($scope, $log, $http, $MybService, $OrderService) {
+    
+    $OrderService.submitOrder()
+    
+    $scope.orderSaved = $OrderService.orderSaved
       
 }]);

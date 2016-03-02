@@ -1,5 +1,5 @@
 //Services
-Main.service("$MybService", ['$http', '$log', function($http, $log) {
+Main.service("$MybService", ['$http', '$state', '$log', function($http, $state, $log) {
    var mybSvs = this;
    mybSvs.menu = undefined;
    mybSvs.customer = undefined;
@@ -15,24 +15,45 @@ Main.service("$MybService", ['$http', '$log', function($http, $log) {
            
            if(cust.mtn == undefined || cust.mtn == '') {
                mybSvs.errorMsg = 'Please provide mtn';
-               return false;
+               $state.go('home');
            }
            
            $http.post('/customer/save', cust)
                 .success(function(data, status) {
                     mybSvs.registered = true;
-                    return true;
+                    $state.go('menu');
                 })
                 .error(function(data, status) {
                     $log.info(status);
                     mybSvs.errorMsg = status + " Failed to register the customer : " + cust.mtn;
-                    return false;
+                    $state.go('home');
                 });
            
+       } else {
+           $state.go('menu');
        }
-       return true;
    }
    
+   
+   mybSvs.lookupCustomer = function() {
+       var cust = mybSvs.customer;
+       
+       if(cust.mtn == undefined || cust.mtn == '') {
+           mybSvs.errorMsg = 'Please provide mtn';
+           $state.go('home');
+       }
+       
+       $http.get('/customer/lookup/:mtn')
+           .success(function(data, status) {
+                mybSvs.customer = data;
+                $state.go('menu');
+           })
+           .error(function(data, status) {
+                $log.info(status);
+                mybSvs.errorMsg = status + " Failed to register the customer : " + cust.mtn;
+                $state.go('home');
+            });
+   }
    
 }]);
 

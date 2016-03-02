@@ -16,6 +16,21 @@ Main.controller('HomeCtrl', ['$scope', '$http', '$MybService',
 }]);
 
 
+
+//Customer Register Controller
+Main.controller('CustCtrl', ['$scope', '$MybService',
+  function ($scope, $MybService) {
+    //Register the customer
+      $MybService.registerCustomer()
+}]);
+
+//Customer Lookup Controller
+Main.controller('LookupCtrl', ['$scope', '$MybService',
+  function ($scope, $MybService) {
+    //Register the customer
+      $MybService.registerCustomer()
+}]);
+
 //Menu Controller
 Main.controller('MenuCtrl', ['$scope','$log', '$http', '$MybService', '$OrderService',
   function ($scope, $log, $http, $MybService, $OrderService) {

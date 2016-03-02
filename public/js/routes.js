@@ -26,8 +26,13 @@
             })
             .state("customer", {
 //                url: "/menu",
-                templateUrl: 'assets/layout/menu.html',
-                controller: 'MenuCtrl'
+//                templateUrl: 'assets/layout/menu.html',
+                controller: 'CustCtrl'
+            })
+            .state("lookup", {
+//                url: "/menu",
+//                templateUrl: 'assets/layout/menu.html',
+                controller: 'CustCtrl'
             })
 
         $urlRouterProvider.otherwise('home');

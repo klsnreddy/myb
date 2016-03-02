@@ -19,7 +19,11 @@
         <span class="col-xs-6 col-sm-6 ng-md-6"><span style="float:right"> {{orderTotal}} </span></span>
     </div>
      <hr>
-    <a ui-sref="review.order" class="btn btn-primary" ng-hide="orderSaved || order == undefined"><i></i> Order</a>
+    <div class="row">
+        <span style="float: right">
+            <a ui-sref="review.order" class="btn btn-primary" ng-hide="orderSaved || order == undefined"><i></i> Order</a>
+        </span>
+    </div>
      <div ui-view></div>
 </div>
 

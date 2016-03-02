@@ -27,8 +27,8 @@ Main.controller('CustCtrl', ['$scope', '$MybService',
 //Customer Lookup Controller
 Main.controller('LookupCtrl', ['$scope', '$MybService',
   function ($scope, $MybService) {
-    //Register the customer
-      $MybService.registerCustomer()
+    //Lookup customer
+      $MybService.lookupCustomer()
 }]);
 
 //Menu Controller

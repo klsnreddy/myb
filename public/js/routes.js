@@ -32,7 +32,7 @@
             .state("lookup", {
 //                url: "/menu",
 //                templateUrl: 'assets/layout/menu.html',
-                controller: 'CustCtrl'
+                controller: 'LookupCtrl'
             })
 
         $urlRouterProvider.otherwise('home');

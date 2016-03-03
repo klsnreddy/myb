@@ -43,7 +43,7 @@ Main.service("$MybService", ['$http', '$state', '$log', function($http, $state, 
            $state.go('home');
        }
        
-       $http.get('/customer/lookup/:mtn')
+       $http.get('/customer/lookup/' + cust.mtn)
            .success(function(data, status) {
                 mybSvs.customer = data;
                 $state.go('menu');

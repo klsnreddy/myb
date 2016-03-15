@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My Bawarchi</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+        -->
+        <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.min.js"></script>
+        
+        
+        <script src="/assets/js/app.js"></script>
+        <script src="/assets/js/directives.js"></script>
+        <script src="/assets/js/routes.js"></script>
+        <script src="/assets/js/services.js"></script>
+        <script src="/assets/js/controller.js"></script>
+        <script src="/assets/js/jq-events.js"></script>
+            
+        <link rel="stylesheet" type="text/css" href="/assets/css/app.css">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    </head>
+    <body ng-app="Main"
+             ng-controller="MainCtrl">
+        
+        <div class="container" style="min-height: inherit">    
+            <header>
+                <nav class="navbar navbar-default">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/">MyB</a>
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-right" style="margin-right: 0px">
+                        <li><a ui-sref="admin"><i class="fa fa-home"></i> Admin</a></li>
+                        <li><a ui-sref="home"><i class="fa"></i> Home</a></li>
+                        <li><a ui-sref="menu"><i></i> Menu</a></li>
+                        <li><a ui-sref="review"><i></i> Review</a></li>
+                        
+                    </ul>
+                </nav>
+            </header>
+        </div>
+        
+        <div ui-view></div>
+        
+    </body>
+</html>

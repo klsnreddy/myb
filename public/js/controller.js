@@ -5,7 +5,34 @@ Main.controller('MainCtrl',
     }]);
 
 
-//Todo controller
+//Admin Controller
+Main.controller('AdminCtrl', ['$scope', '$http', '$log', '$MybService', 
+    function($scope, $http, $log, $MybService) {
+
+        if($MybService.admin == undefined) {
+            $MybService.admin = {};                     
+        }
+        $scope.admin = $MybService.admin;
+
+    }]);
+
+//Auth Controller
+Main.controller('AuthCtrl', ['$scope', '$http', '$log', '$state', '$MybService', 
+    function($scope, $http, $log, $state, $MybService) {
+
+        if($MybService.admin == undefined || 
+            $MybService.admin.username == undefined ||
+            $MybService.admin.password == undefined) {
+            $scope.errorMsg = "Please provide UserName and Password."
+            $state.go('admin')
+        } else {
+            $MybService.authenticate()
+        }
+        
+
+    }]);
+
+//Home controller
 Main.controller('HomeCtrl', ['$scope', '$http', '$MybService',
     function ($scope, $http, $MybService) {
     
@@ -68,11 +95,9 @@ Main.controller('ReviewCtrl', ['$scope','$log', '$http', '$OrderService',
 
 
 //Check Out Controller
-Main.controller('OrderCtrl', ['$scope','$log', '$http', '$MybService', '$OrderService', 
-  function ($scope, $log, $http, $MybService, $OrderService) {
+Main.controller('OrderCtrl', ['$scope','$log', '$http', '$state', '$MybService', '$OrderService', 
+  function ($scope, $log, $http, $state, $MybService, $OrderService) {
     
     $OrderService.submitOrder()
-    
-    $scope.orderSaved = $OrderService.orderSaved
       
 }]);

@@ -1,8 +1,28 @@
 var express = require('express');
 var ejs = require("ejs");
-//var db = require('./lib/db');
 var mongoose = require('mongoose');  
 var bodyParser = require('body-parser');
+//Winston logger
+var winston = require('winston');
+var logger = new (winston.Logger)({
+  transports: [
+    new (winston.transports.File)({
+      name: 'debug-file',
+      filename: 'filelog-debug.log',
+      level: 'debug'
+    }),
+    new (winston.transports.File)({
+      name: 'info-file',
+      filename: 'filelog-info.log',
+      level: 'info'
+    }),
+    new (winston.transports.File)({
+      name: 'error-file',
+      filename: 'filelog-error.log',
+      level: 'error'
+    })
+  ]
+});
 
 var app = express();
 
@@ -22,20 +42,36 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
+app.get('/admin', function(req, res) {
+    res.render('admin');
+});
+
+app.post('/auth', function(req, res) {
+  var admin = req.body
+  // logger.debug(req.body)
+  if(admin.username == 'admin' &&
+    admin.password == 'admin')
+    res.json({'code': '0', 'msg': 'Authenticated.'})
+  else
+    res.json({'code': '101', 'msg': 'Authentication failed.'})
+});
+
+
+
 
 //Menu page.
 var menuSchema = require('./lib/menuSchema.js');
 var menu = require('./lib/menu.js');
-menu(app, menuSchema(mongoose));
+menu(app, menuSchema(mongoose), logger);
 
 //Customers page.
 var customerSchema = require('./lib/customerSchema.js');
 var customer = require('./lib/customer.js');
-customer(app, customerSchema(mongoose));
+customer(app, customerSchema(mongoose), logger);
 
 //Orders
 var orderSchema = require('./lib/orderSchema.js');
 var order = require('./lib/order.js');
-order(app, orderSchema(mongoose));
+order(app, orderSchema(mongoose), logger);
 
 app.listen(port); 

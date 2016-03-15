@@ -1,0 +1,26 @@
+
+<div class="container"
+     ng-app="Home">
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <div style="padding: 10px 10px 10px 10px" ng-model="admin">
+                
+                <label>Please provide Admin credentials.</label>
+                <p>
+                    <input type="test" ng-model="admin.username" placeholder="User name" required>
+                </p>
+                <p>
+                    <input type="password" ng-model="admin.password" placeholder="Password" required>
+                </p>
+                
+                <div>
+                    <a ui-sref="auth" class="btn btn-primary">Authenticate</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <img src="/assets/img/Biryani.png">
+        </div>
+    </div>
+</div>

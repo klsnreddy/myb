@@ -1,28 +1,39 @@
 
 <div class="container"
      ng-app="Home"
-     ng-controller="HomeCtrl">
+     >
 
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6">
-            <img src="/assets/img/Biryani.png">
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-6">
             <div style="padding: 10px 10px 10px 10px" ng-model="customer">
-                <label>Please provide 10 digit Telephone number.</label>
                 <p>
-                    <input type="tel" ng-model="customer.mtn">
-                </p>
-                <p>
-                    <input type="text" ng-model="customer.firstname" placeholder="First Name">
-                </p>
-                <p>
-                    <input type="text" ng-model="customer.lastname" placeholder="Last Name">
+                    <input type="tel" ng-model="customer.mtn" placeholder="Telephone number" required ng-minlength="10" ng-maxlength="10">
                 </p>
                 <div>
-                    <a ui-sref="customer">Register</a>
+                    <a ui-sref="lookup" class="btn btn-primary">Look Up</a>
+                </div>
+                
+                <p>
+                    Or
+                </p>
+                
+                <label>Please provide 10 digit Telephone number.</label>
+                <p>
+                    <input type="tel" ng-model="customer.mtn" placeholder="Telephone number" required ng-minlength="10" ng-maxlength="10">
+                </p>
+                <p>
+                    <input type="text" ng-model="customer.firstname" placeholder="First Name" required>
+                </p>
+                <p>
+                    <input type="text" ng-model="customer.lastname" placeholder="Last Name" required>
+                </p>
+                <div>
+                    <a ui-sref="customer" class="btn btn-primary">Register</a>
                 </div>
             </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <img src="/assets/img/Biryani.png">
         </div>
     </div>
 </div>

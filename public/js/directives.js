@@ -1,10 +1,12 @@
 Main.directive("itemList", function() {
    return {
        restrict: 'AECM',
+       controller: 'MenuCtrl',
        templateUrl: 'assets/layout/itemList.html',
        replace: true,
        scope: {
-           sub: "=",
+           sub: "="
+//           ,addToOrder : "&"
        },
       link: function(scope, element, attrs) {
            //Sub Category level 

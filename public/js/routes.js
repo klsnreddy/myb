@@ -14,42 +14,37 @@
                 templateUrl: 'assets/layout/menu.html',
                 controller: 'MenuCtrl'
             })
-            .state("checkOut", {
-                url: "/checkOut",
-                templateUrl: 'assets/layout/checkOut.html',
-                controller: 'CheckOutCtrl'
+            .state("review", {
+                url: "/review",
+                templateUrl: 'assets/layout/review.html',
+                controller: 'ReviewCtrl'
+            })
+            .state("submit", {
+                controller: 'OrderCtrl'
+            })
+            .state("success", {
+                url: "/success",
+                templateUrl: 'assets/layout/success.html'
             })
             .state("customer", {
-                url: "/menu",
-                templateUrl: 'assets/layout/menu.html',
-                controller: 'MenuCtrl'
+                controller: 'CustCtrl'
+            })
+            .state("lookup", {
+                controller: 'LookupCtrl'
+            })
+            .state("admin", {
+                url: '/admin',
+                templateUrl: 'assets/layout/admin.html',
+                controller: 'AdminCtrl'
+            })
+            .state("auth", {
+                controller: 'AuthCtrl'
+            })
+            .state("orders", {
+                url: '/orders',
+                templateUrl: 'assets/layout/orders.html',
+                controller: 'OrdersCtrl'
             })
 
         $urlRouterProvider.otherwise('home');
     });
-
-
-    /*Main.config(function ($routeProvider) {
-        $routeProvider
-
-        .when('/', {
-            templateUrl: 'assets/layout/todo.html',
-            controller: 'TodosListCtrl'
-        })
-
-        .when('/menu', {
-            templateUrl: 'assets/layout/menu.html',
-            controller: 'MenuCtrl'
-        })
-
-        .when('/checkOut', {
-            templateUrl: 'assets/layout/checkOut.html',
-            controller: 'CheckOutCtrl'
-        })
-        
-        
-    });*/
-
-    
-    
-/*})();*/

@@ -1,0 +1,28 @@
+<div class="container">
+Here are your orders.
+    
+    <!-- Appetisers -->
+    <div class="row" ng-repeat="item in order">
+        <span class="col-xs-6 col-sm-6 ng-md-4">{{item.name}}</span>
+        <span class="col-xs-2 col-sm-2 ng-md-2">
+          <span style="float: right">{{item.price}} <span ng-if="item.price < 10">&nbsp;</span>
+          </span>
+        </span>
+        <span class="col-xs-2 col-sm-2 ng-md-2">{{item.count}}</span>
+        <span class="col-xs-2 col-sm-2 ng-md-2"><span style="float: right">{{item.total}}</span></span>
+    </div>
+    <hr>
+    <div class="row">
+        <span class="col-xs-6 col-sm-6 ng-md-6"> Total : </span>
+        <span class="col-xs-6 col-sm-6 ng-md-6"><span style="float:right"> {{orderTotal}} </span></span>
+    </div>
+     <hr>
+    <div class="row">
+        <span style="float: right">
+            <a ui-sref="submit" class="btn btn-primary" ng-hide="orderSaved || order == undefined"><i></i> Order</a>
+        </span>
+
+    </div>
+     
+</div>
+

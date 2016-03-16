@@ -1,6 +1,6 @@
 <div class="container"
      ng-app="Menu"
-     ng-controller="MenuCtrl">
+     >
 
 
     <!-- Appetisers -->
@@ -13,7 +13,7 @@
               <span class="menu-icon glyphicon glyphicon-menu-down"></span></li></ul>
           <!-- Sub Categories -->
           <div class="row sub-cat">
-              <item-list sub="sub"  class="col-xs-12 col-sm-12 col-md-6" ng-repeat="sub in cat.sub"/>
+              <item-list sub="sub" add-to-order="addToOrder(sub, this)" class="col-xs-12 col-sm-12 col-md-6" ng-repeat="sub in cat.sub"/>
           </div>
       </div>
 
@@ -31,11 +31,11 @@
           <div class="row sub-cat">
               <div class="col-xs-12 col-sm-12 col-md-6">
                   <!-- Vegetarian and Non-Vegetarian Sub Category -->
-                  <item-list sub="sub" ng-repeat="sub in cat.sub" ng-if="sub.id !== 'F'"/>
+                  <item-list sub="sub" add-to-order="addToOrder(sub, this)" ng-repeat="sub in cat.sub" ng-if="sub.id !== 'F'"/>
               </div>
 
               <!-- Family Pack Sub Category -->
-              <item-list sub="sub" class="col-xs-12 col-sm-12 col-md-6" ng-repeat="sub in cat.sub | filter: {id: 'F'}"/>
+              <item-list sub="sub" add-to-order="addToOrder(sub, this)" class="col-xs-12 col-sm-12 col-md-6" ng-repeat="sub in cat.sub | filter: {id: 'F'}"/>
 
           </div>
       </div>

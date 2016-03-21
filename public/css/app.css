@@ -167,6 +167,15 @@ nav div span {
     position: relative
 }
 
+nav div span:after,nav div span:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: #ed1c24;
+    position: absolute;
+}
+
 /* Menu page css End */
 
 @media (max-width: 800px) {

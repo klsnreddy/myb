@@ -27,7 +27,8 @@
         
         <div class="container" style="min-height: inherit">    
             <header>
-                <nav class="navbar navbar-default">
+                <!-- Desktop navbar-->
+                <nav class="navbar navbar-default navbar-desktop">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="/">MyB</a>
                     </div>
@@ -40,6 +41,25 @@
                         
                     </ul>
                 </nav>
+
+                <!-- Mobile navbar-->
+                <nav class="navbar navbar-default navbar-mobile">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mobile-navbar-collapse">
+                            <span></span>
+                        </div>
+                        <a class="navbar-brand" href="/">MyB</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="mobile-navbar-collapse">
+                        <ul class="nav navbar-nav" style="margin-right: 0px">
+                            <li><a ui-sref="admin"><i class="fa fa-home"></i> Admin</a></li>
+                            <li><a ui-sref="home"><i class="fa"></i> Home</a></li>
+                            <li><a ui-sref="menu"><i></i> Menu</a></li>
+                            <li><a ui-sref="review"><i></i> Review</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
             </header>
         </div>
         

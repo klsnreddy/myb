@@ -1,3 +1,4 @@
+// The main file.
 var express = require('express');
 var ejs = require("ejs");
 var mongoose = require('mongoose');  
